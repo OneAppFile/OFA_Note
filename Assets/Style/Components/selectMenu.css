@@ -1,0 +1,72 @@
+/**
+ * select menu style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+.select-menu {
+    top: 0;
+    right: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.select-menu.open {
+    z-index: 1;
+}
+
+.select-menu .menu-trigger {
+    right: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.select-menu .menu-trigger:hover,
+.select-menu.open .menu-trigger {
+    border-radius: var(--border-radius);
+    color: var(--primary-color);
+    text-decoration: none;
+    background: transparent;
+    z-index: 1;
+}
+
+.select-menu .menu-body {
+    border: 1px solid var(--alternate-color);
+    border-radius: var(--border-radius);
+    background: var(--box-bg-color);
+    top: 2rem;
+    right: 0;
+    padding: 0.25rem;
+    position: absolute;
+    display: none;
+}
+
+.select-menu.open .menu-body {
+    display: block;
+}
+
+.select-menu .menu-body ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.select-menu .menu-body a {
+    cursor: pointer;
+    text-align: left;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    gap: 0.25rem;
+    align-items: center;
+    display: flex;
+}
+
+.select-menu .menu-body a:hover {
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    background: var(--alternate-color);
+}

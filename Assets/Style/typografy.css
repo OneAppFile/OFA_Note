@@ -1,0 +1,44 @@
+/**
+ * typography style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+h1,
+h2 {
+    letter-spacing: -.5px;
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+
+p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+a,
+a.active {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--link-color);
+}
+
+a:hover {
+    text-decoration-line: underline;
+    color: currentColor;
+}
+
+small {
+    font-size: 0.875rem;
+}

@@ -1,0 +1,308 @@
+{% extends 'Assets/Templates/base.html.twig' %}
+
+{% block content %}
+    @parent
+    {# aside note list #}
+    <aside class="note-list-aside">
+        <div class="control menu-line">
+            <div>
+                <button class="add primary" type="button" commandfor="add-dialog" command="show-modal">
+                    <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-add"/></svg> <span>{{ $lang('Add note') }}</span>
+                </button>
+            </div>
+            <div>
+                <button class="export" type="button">
+                    <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-upload"/></svg> <span>{{ $lang('Export') }}</span>
+                </button>
+                <button class="import" type="button">
+                    <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-download"/></svg> <span>{{ $lang('Import') }}</span>
+                </button>
+            </div>
+        </div>
+        <div class="note-list" data-note="{{ $note ?? '' }}">
+            <div class="empty">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M45.6 5c-2.1 0-3.9 2-4.3 4.7H21q-1 .1-1.1 1.6v75.8q0 1.5 1.1 1.6h3.3v4.7q0 1.6 1.2 1.6h53.3q1 0 1.1-1.6V17.6q0-1.5-1.1-1.5h-3.3v-4.8q0-1.5-1.2-1.6H50C49.4 7 47.6 5 45.6 5m0 3.2q1.3 0 1.9 1.5h-3.9q.6-1.4 2-1.5m-23.4 4.7h19v7.9c0 3.5 2 6.3 4.4 6.3s4.4-2.8 4.4-6.3q0-1.6-1.1-1.6-1 0-1.1 1.6c0 1.7-1 3.1-2.2 3.1s-2.3-1.4-2.3-3.1v-8h30v72.8H22.2zm53.4 6.3h2.2v72.6H26.7v-3.1h47.7q1.1 0 1.2-1.6zM32.2 35q-1 0-1 1.6 0 1.5 1 1.6h10q1-.1 1.1-1.6 0-1.5-1-1.6zm14.5 0q-1 0-1.1 1.6 0 1.5 1 1.6h7.8q1.1-.1 1.2-1.6T54.4 35zm12.2 0q-1 0-1.1 1.6 0 1.5 1 1.6h4.5q1-.1 1.1-1.6 0-1.5-1-1.6zM40 44.5q-1 0-1.1 1.6 0 1.4 1.1 1.5h7.8q1 0 1-1.5 0-1.6-1-1.6zm14.4 0q-1 0-1 1.6 0 1.4 1 1.5h9q1 0 1-1.5 0-1.6-1-1.6zm-22.2 0q-1 0-1 1.6 0 1.4 1 1.5h3.4q1 0 1-1.5 0-1.6-1-1.6zM60 53.9q-1 .1-1.1 1.6 0 1.5 1.1 1.6h3.3q1 0 1.1-1.6 0-1.6-1-1.6zm-27.8 0q-1 .1-1 1.6 0 1.6 1 1.6h5.6q1 0 1-1.6 0-1.5-1-1.6zm12.2 0q-1 .1-1 1.6 0 1.6 1 1.6h11.2q1 0 1-1.6 0-1.5-1-1.6zM40 63.4q-1 .1-1.1 1.6 0 1.5 1.1 1.6h4.4q1.1-.1 1.2-1.6 0-1.6-1.2-1.6zm11.1 0q-1 .1-1.1 1.6 0 1.5 1.1 1.6h12.2q1-.1 1.1-1.6 0-1.6-1-1.6zm-18.9 0q-1 .1-1 1.6t1 1.6h3.4q1-.1 1-1.6t-1-1.6z"/></svg>
+                <p>{{ $lang('Empty notes list') }}</p>
+            </div>
+        </div>
+    </aside>
+    {# main note content #}
+    {% set $settingsLock = $settings['lock'] ?? 'false' %}
+    {% set $settingsProof = $settings['proof'] ?? '' %}
+    {% set $settingsFont = $settings['font'] ?? 'font-sans' %}
+    {% set $settingsBg = $settings['bg'] ?? 'bg-lined' %}
+    {% set $settingsSize = $settings['size'] ?? 'size-m' %}
+    {% set $settingsSpelcheck = $settings['spellcheck'] ?? 'false' %}
+    <div class="content"{{{ $note ? ' data-note="'.$note.'"' : '' }}}>
+        {% if (isset($content)): %}
+            <div class="note-content">
+                <div class="control menu-line">
+                    <div class="note-protection{{ $settingsLock == 'true' ? ' locked' : ' unlocked' }}">
+                        <button class="lock-btn" type="button" title="{{ $lang('Set password') }}">
+                            <svg class="icon icon-locked" viewBox="0 0 24 24"><use xlink:href="#ocno-i-lock-open"/></svg> <span>{{ $lang('Set password') }}</span>
+                        </button>
+                        <button class="unlock-btn" type="button" title="{{ $lang('Remove password') }}">
+                            <svg class="icon icon-unlocked" viewBox="0 0 24 24"><use xlink:href="#ocno-i-lock"/></svg> <span>{{ $lang('Remove password') }}</span>
+                        </button>
+                        <button class="print-btn" type="button" title="{{ $lang('Print') }}">
+                            <svg class="icon" viewBox="0 0 24 24"><use xlink:href="#ocno-i-print"/></svg> <span>{{ $lang('Print') }}</span>
+                        </button>
+                        <button hidden class="share-btn" type="button" title="{{ $lang('Share') }}">
+                            <svg class="icon" viewBox="0 0 24 24"><use xlink:href="#ocno-i-share"/></svg> <span>{{ $lang('Share') }}</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="export-btn" title="{{ $lang('Export') }}">
+                            <svg class="icon" viewBox="0 0 24 24"><use xlink:href="#ocno-i-download"/></svg> <span>{{ $lang('Export') }}</span>
+                        </button>
+                        <button class="import-btn" title="{{ $lang('Import') }}">
+                            <svg class="icon" viewBox="0 0 24 24"><use xlink:href="#ocno-i-upload"/></svg> <span>{{ $lang('Import') }}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="note {{ $settingsFont }} {{ $settingsBg }} {{ $settingsSize }}"
+                     spellcheck="{{ $settingsSpelcheck == 'true' ? 'true' : 'false' }}"
+                     data-note="{{{ $note }}}"
+                     data-action="{{{ str_replace('--NOTE--', $note, $router->url('save', ['note' => '--NOTE--'])) }}}"
+                ></div>
+            </div>
+        {% else: %}
+            <div class="no-note">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M45.6 5c-2.1 0-3.9 2-4.3 4.7H21q-1 .1-1.1 1.6v75.8q0 1.5 1.1 1.6h3.3v4.7q0 1.6 1.2 1.6h53.3q1 0 1.1-1.6V17.6q0-1.5-1.1-1.5h-3.3v-4.8q0-1.5-1.2-1.6H50C49.4 7 47.6 5 45.6 5m0 3.2q1.3 0 1.9 1.5h-3.9q.6-1.4 2-1.5m-23.4 4.7h19v7.9c0 3.5 2 6.3 4.4 6.3s4.4-2.8 4.4-6.3q0-1.6-1.1-1.6-1 0-1.1 1.6c0 1.7-1 3.1-2.2 3.1s-2.3-1.4-2.3-3.1v-8h30v72.8H22.2zm53.4 6.3h2.2v72.6H26.7v-3.1h47.7q1.1 0 1.2-1.6zM32.2 35q-1 0-1 1.6 0 1.5 1 1.6h10q1-.1 1.1-1.6 0-1.5-1-1.6zm14.5 0q-1 0-1.1 1.6 0 1.5 1 1.6h7.8q1.1-.1 1.2-1.6T54.4 35zm12.2 0q-1 0-1.1 1.6 0 1.5 1 1.6h4.5q1-.1 1.1-1.6 0-1.5-1-1.6zM40 44.5q-1 0-1.1 1.6 0 1.4 1.1 1.5h7.8q1 0 1-1.5 0-1.6-1-1.6zm14.4 0q-1 0-1 1.6 0 1.4 1 1.5h9q1 0 1-1.5 0-1.6-1-1.6zm-22.2 0q-1 0-1 1.6 0 1.4 1 1.5h3.4q1 0 1-1.5 0-1.6-1-1.6zM60 53.9q-1 .1-1.1 1.6 0 1.5 1.1 1.6h3.3q1 0 1.1-1.6 0-1.6-1-1.6zm-27.8 0q-1 .1-1 1.6 0 1.6 1 1.6h5.6q1 0 1-1.6 0-1.5-1-1.6zm12.2 0q-1 .1-1 1.6 0 1.6 1 1.6h11.2q1 0 1-1.6 0-1.5-1-1.6zM40 63.4q-1 .1-1.1 1.6 0 1.5 1.1 1.6h4.4q1.1-.1 1.2-1.6 0-1.6-1.2-1.6zm11.1 0q-1 .1-1.1 1.6 0 1.5 1.1 1.6h12.2q1-.1 1.1-1.6 0-1.6-1-1.6zm-18.9 0q-1 .1-1 1.6t1 1.6h3.4q1-.1 1-1.6t-1-1.6z"/></svg>
+                <p>{{ $lang('No note selected') }}</p>
+                <button class="add primary" type="button" commandfor="add-dialog" command="show-modal">
+                    <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-add"/></svg>
+                    <span>{{ $lang('Add note') }}</span>
+                </button>
+            </div>
+        {% endif %}
+    </div>
+    {# aside note setting #}
+    <aside class="note-setting-aside"{{{ $note ? ' data-note="'.$note.'"' : '' }}}>
+        <div>
+            <div class="note-setting">
+                <h2 class="tab-link">{{ $lang('Setting') }}</h2>
+                <input class="setting-element" type="hidden" name="lock" value="{{ $settingsLock == 'true' ? 'true' : 'false' }}">
+                <input class="setting-element" type="hidden" name="proof" value="{{ $settingsProof }}">
+                <div class="form-line">
+                    <label for="setting-font">{{ $lang('Font') }}</label>
+                    <select class="setting-element" name="font" id="setting-font">
+                        <option value="font-sans"{{ $settingsFont == 'font-sans' ? ' selected' : ''}}>{{ $lang('Sans serif') }}</option>
+                        <option value="font-serif"{{ $settingsFont == 'font-serif' ? ' selected' : ''}}>{{ $lang('Serif') }}</option>
+                        <option value="font-monospace"{{ $settingsFont == 'font-monospace' ? ' selected' : ''}}>{{ $lang('Monospace') }}</option>
+                    </select>
+                </div>
+                <div class="form-line">
+                    <label for="setting-background">{{ $lang('Background') }}</label>
+                    <select class="setting-element" name="bg" id="setting-background">
+                        <option value="bg-blank"{{ $settingsBg == 'bg-blank' ? ' selected' : ''}}>{{ $lang('Simple') }}</option>
+                        <option value="bg-lined"{{ $settingsBg == 'bg-lined' ? ' selected' : ''}}>{{ $lang('Lined') }}</option>
+                        <option value="bg-checkered"{{ $settingsBg == 'bg-checkered' ? ' selected' : ''}}>{{ $lang('Checkered') }}</option>
+                        <option value="bg-dotted"{{ $settingsBg == 'bg-dotted' ? ' selected' : ''}}>{{ $lang('Dotted') }}</option>
+                    </select>
+                </div>
+                <div class="form-line">
+                    <label for="setting-fontsize">{{ $lang('Fontsize') }}</label>
+                    <select class="setting-element" name="size" id="setting-fontsize">
+                        <option value="size-xs"{{ $settingsSize == 'size-xs' ? ' selected' : ''}}>{{ $lang('Extra small') }}</option>
+                        <option value="size-s"{{ $settingsSize == 'size-s' ? ' selected' : ''}}>{{ $lang('Small') }}</option>
+                        <option value="size-m"{{ $settingsSize == 'size-m' ? ' selected' : ''}}>{{ $lang('Medium') }}</option>
+                        <option value="size-l"{{ $settingsSize == 'size-l' ? ' selected' : ''}}>{{ $lang('Large') }}</option>
+                        <option value="size-xl"{{ $settingsSize == 'size-xl' ? ' selected' : ''}}>{{ $lang('Extra large') }}</option>
+                    </select>
+                </div>
+                <div class="form-line">
+                    <label for="setting-spellcheck">{{ $lang('Spellcheck') }}</label>
+                    <select class="setting-element" name="spellcheck" id="setting-spellcheck">
+                        <option value="true"{{ $settingsSpelcheck == 'true' ? ' selected' : ''}}>{{ $lang('_Yes') }}</option>
+                        <option value="false"{{ $settingsSpelcheck == 'false' ? ' selected' : ''}}>{{ $lang('_No') }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="version">{{ $lang('Version') }}: {{ $version }}</div>
+    </aside>
+    {# add dialog #}
+    <dialog closedby="any" data-action="{{{ $router->url('add') }}}" id="add-dialog" aria-labelledby="{{ $lang('Create new note') }}">
+        <form action="#" onsubmit="return false;">
+            <h2>
+                <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-add"/></svg>
+                {{ $lang('Create new note') }}
+            </h2>
+            <p>{{ $lang('Creates a new note that includes a note name and note color') }}</p>
+            <div class="form-line">
+                <label for="dialog-input-name">{{ $lang('Title of note') }}</label>
+                <div class="input-group">
+                    <input id="dialog-input-color" type="color" name="color" value="#17a2b8" title="">
+                    <input id="dialog-input-name" type="text" name="title" placeholder="{{ $lang('Title') }}" title="" autofocus>
+                </div>
+            </div>
+            <div class="control">
+                <div>
+                    <button commandfor="add-dialog" command="close" type="button">{{ $lang('Cancel') }}</button>
+                </div>
+                <div>
+                    <button commandfor="add-dialog" command="close" type="submit" class="primary"
+                        data-url="{{{ str_replace('--URL--', '{note}', $router->url('', ['note' => '--URL--'])) }}}"
+                    >{{ $lang('Create') }}</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    {# edit dialog #}
+    <dialog closedby="any" id="edit-dialog" aria-labelledby="{{ $lang('Edit a note') }}">
+        <form action="#" onsubmit="return false;">
+            <h2>
+                <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-pencil"/></svg>
+                {{ $lang('Edit a note') }}
+            </h2>
+            <p>{{ $lang('Change the name of the note or the color of the note') }}</p>
+            <div class="form-line">
+                <label for="dialog-input-name">{{ $lang('Title of note') }}</label>
+                <div class="input-group">
+                    <input id="dialog-input-edit-color" type="color" name="color" value="#17a2b8" title="">
+                    <input id="dialog-input-edit-name" type="text" name="title" placeholder="{{ $lang('Title') }}" title="" autofocus>
+                </div>
+            </div>
+            <div class="control">
+                <div>
+                    <button commandfor="edit-dialog" command="close" type="button">{{ $lang('Cancel') }}</button>
+                </div>
+                <div>
+                    <button commandfor="edit-dialog" command="close" type="submit" class="primary">{{ $lang('Edit') }}</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    {# delete dialog #}
+    <dialog closedby="any" id="delete-dialog" aria-labelledby="{{ $lang('Delete a note') }}">
+        <form action="#" onsubmit="return false;">
+            <h2>
+                <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-trash"/></svg>
+                {{ $lang('Delete a note') }}
+            </h2>
+            <p>{{ $lang('By clicking on Delete, you delete only the shortcut. If you want to delete a note from the server, first clear the note and the note will be deleted from the server') }}</p>
+            <div class="control">
+                <div>
+                    <button commandfor="delete-dialog" command="close" type="button">{{ $lang('Cancel') }}</button>
+                </div>
+                <div>
+                    <button commandfor="delete-dialog" command="close" type="submit" class="danger-txt">{{ $lang('Delete') }}</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    {# password dialog #}
+    <dialog id="password-dialog" aria-labelledby="{{ $lang('Password protection') }}">
+        <form action="#" onsubmit="return false;">
+            <h2>
+                <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-lock"/></svg>
+                {{ $lang('Password protection') }}
+            </h2>
+            <p>{{ $lang('Enter password to unlock note') }}</p>
+            <div class="form-line">
+                <label for="dialog-get-pass">{{ $lang('Give the password') }}</label>
+                <input id="dialog-get-pass" type="password" name="pass" placeholder="{{ $lang('Password') }}" autofocus autocomplete="off">
+            </div>
+            <div class="error-msg"></div>
+            <div class="control">
+                <div>
+                    <a class="btn" href="{{{ $router->url('') }}}">{{ $lang('Cancel') }}</a>
+                </div>
+                <div>
+                    <button type="submit" class="primary">{{ $lang('Unlock') }}</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    {# add password dialog #}
+    <dialog id="add-password-dialog" aria-labelledby="{{ $lang('Set password') }}">
+        <form action="#" onsubmit="return false;">
+            <h2>
+                <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-lock"/></svg>
+                {{ $lang('Set password') }}
+            </h2>
+            <p>{{ $lang('Password-protected notes are encrypted directly in your browser and sent to the server') }}</p>
+            <p>{{ $lang('Remember your password, otherwise you wont be able to decode the note') }}</p>
+            <p>{{ $lang('Do you want to set a password for the note') }}</p>
+            <div class="form-line">
+                <label for="dialog-set-pass">{{ $lang('Give the password') }}</label>
+                <input id="dialog-set-pass" type="password" name="pass" placeholder="{{ $lang('Password') }}" autofocus autocomplete="off">
+            </div>
+            <div class="form-line">
+                <label for="dialog-repeat-pass">{{ $lang('Repeat the password') }}</label>
+                <input id="dialog-repeat-pass" type="password" name="pass" placeholder="{{ $lang('Repeat the password') }}" autocomplete="off">
+            </div>
+            <div class="error-msg"></div>
+            <div class="control">
+                <div>
+                    <button type="button" commandfor="add-password-dialog" command="close">{{ $lang('Cancel') }}</button>
+                </div>
+                <div>
+                    <button type="submit" class="primary">{{ $lang('Set password') }}</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    {# remove password dialog #}
+    <dialog id="remove-password-dialog" aria-labelledby="{{ $lang('Remove password') }}">
+        <form action="#" onsubmit="return false;">
+            <h2>
+                <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-lock"/></svg>
+                {{ $lang('Remove password') }}
+            </h2>
+            <p>{{ $lang('Do you want to delete the password') }}</p>
+            <div class="form-line">
+                <label for="dialog-delete-pass">{{ $lang('Give the password') }}</label>
+                <input id="dialog-delete-pass" type="password" name="pass" placeholder="{{ $lang('Password') }}" autofocus autocomplete="off">
+            </div>
+            <div class="error-msg"></div>
+            <div class="control">
+                <div>
+                    <button type="button" commandfor="remove-password-dialog" command="close">{{ $lang('Cancel') }}</button>
+                </div>
+                <div>
+                    <button type="submit" class="danger-txt">{{ $lang('Remove') }}</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+{% endblock %}
+
+{# hidden part of #}
+{% block hiddenPart %}
+    @parent
+    <template class="template">
+        <article class="note" style="--note-flag-color:${color}" data-key="${key}">
+            <header>
+                <a href="{{{ str_replace('--URL--', '${key}', $router->url('', ['note' => '--URL--'])) }}}">${title}</a>
+            </header>
+            <div>
+                <div class="select-menu">
+                    <a class="menu-trigger">
+                        <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-three-dots-v"/></svg>
+                    </a>
+                    <div class="menu-body">
+                        <ul>
+                            <li>
+                                <a class="edit" commandfor="edit-dialog" command="show-modal">
+                                    <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-pencil"/></svg>
+                                    <span>{{ $lang('Edit') }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="danger-txt delete" commandfor="delete-dialog" command="show-modal">
+                                    <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-trash"/></svg>
+                                    <span>{{ $lang('Delete') }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </template>
+    {% if (isset($content)): %}
+        <template class="note-content">{{ $content }}</template>
+    {% endif %}
+{% endblock %}

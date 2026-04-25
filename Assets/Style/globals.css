@@ -1,0 +1,59 @@
+/**
+ * global style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+/**
+ * scroll bars
+ */
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar:hover {
+    cursor: pointer;
+    width: .55rem;
+    height: .55rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--alternate-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    background: var(--secondary-color);
+    background-clip: padding-box;
+    transition: border .3s ease-in-out,
+    background-color .3s ease-in-out
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/**
+ * body
+ */
+html,
+body {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font: 15px/24px var(--primary-font), sans-serif;
+    background: var(--main-bg-color);
+    color: var(--primary-color);
+    fill: var(--primary-color);
+    width: 100vw;
+    min-height: 100vh;
+}
+
+[hidden] {
+    display: none !important;
+}

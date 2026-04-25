@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="{{ strtolower($lang->lang) }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ $title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {# open graph #}
+        <meta property="og:title" content="{{ $title }}">
+        <meta property="og:locale" content="{{ strtolower($lang->lang) }}">
+        <meta property="og:url" content="{{{ $router->url('') }}}">
+        <meta property="og:image" content="{{{ $router->url('media', ['file' => '/Assets/Img/screen1.webp']) }}}">
+        <meta property="og:site_name" content="Note OneFile">
+        <meta property="og:type" content="Website">
+        {# fav icons #}
+        <link rel="icon" type="image/ico" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon.svg']) }}}">
+        <link rel="icon" type="image/png" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon48.png']) }}}">
+        <link rel="shortcut icon" type="image/ico" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon.svg']) }}}">
+        <link rel="shortcut icon" type="image/png" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon48.png']) }}}">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon48.png']) }}}" sizes="48x48">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon72.png']) }}}" sizes="72x72">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon114.png']) }}}" sizes="114x114">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon144.png']) }}}" sizes="144x144">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon152.png']) }}}" sizes="152x152">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon180.png']) }}}" sizes="180x180">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon192.png']) }}}" sizes="192x192">
+        <link rel="apple-touch-icon" href="{{{ $router->url('media', ['file' => 'Assets/Img/favicon512.png']) }}}" sizes="512x512">
+        {# PWA #}
+        <meta name="apple-mobile-web-app-title" content="Note OneFile">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="manifest" type="application/json" href="{{{ $router->url('manifest.json') }}}">
+        {# style #}
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/normalize.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/variables.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/globals.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/typografy.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/forms.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/Components/bullhorn.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/Components/content.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/Components/dialog.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/Components/dragAndDrop.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/Components/selectMenu.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/header.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/aside.css']) }}}" rel="stylesheet" type="text/css">
+        <link href="{{{ $router->url('media', ['file' => 'Assets/Style/print.css']) }}}" rel="stylesheet" type="text/css">
+    </head>
+    <body class="app{{ ($options['t'] ?? '') == 'd' ? ' dark' : '' }}">
+        <header>
+            <nav>
+                <div class="header-control">
+                    <button class="burger-menu list" type="button" hidden>
+                        <span class="ico"></span>
+                    </button>
+                </div>
+                <div class="header-logo">
+                    <a href="{{{ $router->getBaseUrl() }}}">
+                        <figure class="logo">
+                            <img src="{{{ $router->url('media', ['file' => 'Assets/Img/favicon.svg']) }}}" alt="Note">
+                            <figcaption>Note</figcaption>
+                        </figure>
+                    </a>
+                </div>
+                <div class="header-control">
+                    <div class="sync">
+                        <svg class="icon edit" viewBox="0 0 24 24"><use xlink:href="#ocno-i-pencil"/></svg>
+                        <svg class="icon sent" viewBox="0 0 24 24"><use xlink:href="#ocno-i-check"/></svg>
+                        <svg class="icon error" viewBox="0 0 24 24"><use xlink:href="#ocno-i-warning"/></svg>
+                    </div>
+                    <div class="lang-chooser">
+                        <button class="btn lang-btn" type="button" title="{{ $lang('Language') }}">
+                            <svg class="icon" viewBox="0 0 24 24"><use xlink:href="#ocno-i-globus"/></svg>
+                        </button>
+                        <ul hidden>
+                            {% foreach ($lang->getAvailableLanguages() as $l => $title): %}
+                                <li>
+                                    <button {{{ $lang->lang == $l ? 'class="current" ' : '' }}}type="button" data-lang="{{ $l }}">{{ $title }}</button>
+                                </li>
+                            {% endforeach %}
+                        </ul>
+                    </div>
+                    <div class="theme-chooser">
+                        <button class="btn theme-btn" type="button" title="{{ $lang('Theme') }}">
+                            <svg class="icon" viewBox="0 0 24 24"><use xlink:href="#ocno-i-moon"/></svg>
+                            <svg class="icon" viewBox="0 0 24 24"><use xlink:href="#ocno-i-sun"/></svg>
+                        </button>
+                    </div>
+                    <button class="burger-menu setting" type="button" hidden>
+                        <span class="ico"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <main>
+            {% yield content %}
+        </main>
+        <div class="hidden-part" hidden>
+            {% extends 'Assets/Img/icons.svg' %}
+            {% yield hiddenPart %}
+        </div>
+        <script>
+            function __(key) {
+                const dict = {
+                    'File cannot be read': '{{ $lang('File cannot be read') }}',
+                    'There was a problem communicating with the server': '{{ $lang('There was a problem communicating with the server') }}',
+                    'An error occurred on content paste clipboard data': '{{ $lang('An error occurred on content paste clipboard data') }}',
+                    'An error occurred while trying to share content': '{{ $lang('An error occurred while trying to share content') }}',
+                    'It is not possible to save, a false password has been entered': '{{ $lang('It is not possible to save, a false password has been entered') }}',
+                    'Password was not specified': '{{ $lang('Password was not specified') }}',
+                    'The passwords do not match': '{{ $lang('The passwords do not match') }}',
+                    'The given password seems to be incorrect': '{{ $lang('The given password seems to be incorrect') }}',
+                };
+                return dict[key] || key;
+            }
+            const MAIN_URL = '{{{ $router->url('') }}}';
+        </script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/JSE.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/bullhorn.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/cookies.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/cryptography.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/dialog.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/dragAndDrop.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/file.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/localstorage.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/selectMenu.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/Components/viewer.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/themaChooser.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/languageChooser.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/listManager.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/aside.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/editor.js']) }}}"></script>
+        <script type="text/javascript" src="{{{ $router->url('media', ['file' => 'Assets/Js/index.js']) }}}"></script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+/**
+ * variables style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+:root {
+    --app-color: #3f6ca6;
+    --primary-color: #171717;
+    --secondary-color: #737373;
+    --link-color: #737373;
+    --main-bg-color: #fafafa;
+    --box-bg-color: #fff;
+    --alternate-color: #e6e6e6;
+    --box-shadow: rgba(23, 23, 23, 0.05);
+    --primary-font: "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --border-radius: 0.75rem;
+    --color-success: #28a745;
+    --color-info: #17a2b8;
+    --color-warning: #ffc107;
+    --color-danger: #dc3545;
+}
+
+/* dark theme */
+body.dark {
+    --primary-color: #fff;
+    --secondary-color: #808b96;
+    --link-color: #69717c;
+    --main-bg-color: #131f2a;
+    --box-bg-color: #1b2b3b;
+    --alternate-color: #0b0f14;
+}

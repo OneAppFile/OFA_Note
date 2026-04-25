@@ -1,0 +1,138 @@
+/**
+ * aside style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+body > header button {
+    border: none;
+    background: transparent;
+    padding: 0.25rem;
+    width: 2.3rem;
+    height: 2.3rem
+}
+
+body > header button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--primary-color);
+}
+
+body > header button.burger-menu span.ico,
+body > header button.burger-menu span.ico::before,
+body > header button.burger-menu span.ico::after {
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    width: 1.2rem;
+    height: .125rem;
+    padding: 0;
+    margin: 0;
+    transition: background .3s;
+    display: block
+}
+
+body > header button.burger-menu span.ico::before,
+body > header button.burger-menu span.ico::after {
+    content: "";
+    width: 1.6rem;
+    margin-left: -.4rem;
+    transition: transform 0.3s,
+        margin-top 0.3s;
+    position: absolute;
+    display: block
+}
+
+body > header button.burger-menu span.ico,
+body > header button.burger-menu.list span.ico::before,
+body > header button.burger-menu.list span.ico::after {
+    margin-left: 0;
+}
+
+body > header button.burger-menu span.ico::before {
+    margin-top: -.55rem
+}
+
+body > header button.burger-menu span.ico::after {
+    margin-top: .55rem
+}
+
+@media (max-width: 1300px) {
+    .burger-menu.setting {
+        display: block !important;
+    }
+
+    main .note-setting-aside {
+        z-index: 2;
+        right: -300px;
+    }
+
+    main .content {
+        margin-right: 0;
+        width: calc(100% - 400px);
+    }
+
+    body.view-setting main .note-setting-aside {
+        right: 0;
+    }
+
+    body.view-setting button.burger-menu.setting span.ico {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    body.view-setting button.burger-menu.setting span.ico:after,
+    body.view-setting button.burger-menu.setting span.ico:before {
+        transition: transform .3s .3s, margin-top .3s;
+    }
+
+    body.view-setting button.burger-menu.setting span.ico:before {
+        margin-top: 0;
+        transform: rotate(-45deg)
+    }
+
+    body.view-setting button.burger-menu.setting span.ico:after {
+        margin-top: 0;
+        transform: rotate(45deg)
+    }
+}
+
+
+@media (max-width: 900px) {
+    .burger-menu.list {
+        display: block !important;
+    }
+
+    main .note-list-aside {
+        z-index: 2;
+        left: -400px;
+    }
+
+    main .content {
+        margin-left: 0;
+        width: calc(100%);
+    }
+
+    body.view-list main .note-list-aside {
+        left: 0;
+    }
+
+    body.view-list button.burger-menu.list span.ico {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    body.view-list button.burger-menu.list span.ico:after,
+    body.view-list button.burger-menu.list span.ico:before {
+        transition: transform .3s .3s, margin-top .3s;
+    }
+
+    body.view-list button.burger-menu.list span.ico:before {
+        margin-top: 0;
+        transform: rotate(-45deg)
+    }
+
+    body.view-list button.burger-menu.list span.ico:after {
+        margin-top: 0;
+        transform: rotate(45deg)
+    }
+}

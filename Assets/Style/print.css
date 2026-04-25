@@ -1,0 +1,50 @@
+/**
+ * style for printing.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+@media print {
+    * {
+        height: auto !important;
+    }
+
+    body,
+    body * {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+    title,
+    header,
+    aside,
+    div.control {
+        display: none !important;
+    }
+
+    main {
+        color: #343a40;
+        background: #fff;
+        height: auto !important;
+    }
+
+    main .content,
+    main .content .note-content {
+        margin: 0;
+        border: none !important;
+        width: 100% !important;
+    }
+
+    main .content {
+        padding: 0;
+    }
+
+    main .content .note {
+        margin: 0;
+        page-break-inside: auto;
+        page-break-before: always;
+        box-decoration-break: clone;
+    }
+}

@@ -1,0 +1,49 @@
+/**
+ * bullhorn message alert.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+.bullhorn-notice,
+.bullhorn-notice *{
+    box-sizing: border-box;
+}
+
+.bullhorn-notice {
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--alternate-color, #efefef);
+    background: rgba( 0, 0, 0, 0.8 );
+    line-height: 1.5;
+    text-align: left;
+    right: 0.3rem;
+    width: 300px;
+    padding: 1.3rem;
+    transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
+    opacity: 0;
+    z-index: 1000001;
+    position: fixed;
+    display: block;
+}
+
+.bullhorn-notice > .bullhorn-close {
+    border-radius: 50%;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: #fff;
+    line-height: 1.75rem;
+    text-align: center;
+    font-size: 1.85rem;
+    font-weight: bold;
+    font-style: normal;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+.bullhorn-notice > .bullhorn-close:before {
+    content: "\00D7";
+}

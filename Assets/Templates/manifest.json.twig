@@ -1,0 +1,82 @@
+{
+    "name": "Note OneFile",
+    "short_name": "Note OF",
+    "description": "Simple text note app",
+    "start_url": "{{{ $router->getBaseUrl() }}}",
+    "id": "{{{ $router->getBaseUrl() }}}",
+    "theme_color": "#3f6ca6",
+    "background_color": "white",
+    "display_override": [
+        "window-controls-overlay",
+        "minimal-ui"
+    ],
+    "display":"standalone",
+    "icons": [
+        {
+            "src": "{{{ $router->url('media', ['file' => '/Assets/Img/favicon48.png']) }}}",
+            "sizes": "48x48",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "{{{ $router->url('media', ['file' => '/Assets/Img/favicon96.png']) }}}",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "{{{ $router->url('media', ['file' => '/Assets/Img/favicon144.png']) }}}",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "{{{ $router->url('media', ['file' => '/Assets/Img/favicon180.png']) }}}",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "{{{ $router->url('media', ['file' => '/Assets/Img/favicon192.png']) }}}",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "{{{ $router->url('media', ['file' => '/Assets/Img/screen1.webp']) }}}",
+            "sizes": "1250x700",
+            "type": "image/webp",
+            "form_factor": "wide",
+            "label": "Simple Note Dashboard"
+        },
+        {
+            "src": "{{{ $router->url('media', ['file' => '/Assets/Img/screen2.webp']) }}}",
+            "sizes": "430x930",
+            "type": "image/webp",
+            "platform": "ios",
+            "label": "Application"
+        }
+    ],
+    "shortcuts":[
+        {
+            "name": "Note OneFile",
+            "short_name": "Note OF",
+            "description": "Simple text note app",
+            "url": "{{{ $router->getBaseUrl() }}}",
+            "icons":[
+                {
+                    "src": "{{{ $router->url('media', ['file' => '/Assets/Img/favicon144.png']) }}}",
+                    "sizes":"144x144",
+                    "type":"image/png"
+                },
+                {
+                    "src": "{{{ $router->url('media', ['file' => '/Assets/Img/favicon192.png']) }}}",
+                    "sizes":"192x192",
+                    "type":"image/png"
+                }
+            ]
+        }
+    ]
+}

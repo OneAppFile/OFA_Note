@@ -1,0 +1,181 @@
+/**
+ * header style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+body > header {
+    border-bottom: 1px solid var(--alternate-color);
+    backdrop-filter: blur(10px);
+    top: 0;
+    width: 100%;
+    height: 3rem;
+    padding: 0;
+    justify-content: center;
+    position: sticky;
+    z-index: 2;
+    display: flex
+}
+
+body > header nav {
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    place-content: center;
+    align-items: center;
+    flex-flow: row;
+    justify-content: space-between;
+    display: flex;
+}
+
+.header-logo a {
+    color: var(--app-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+    display: flex
+}
+
+.header-logo a:hover {
+    transform: scale(1.1);
+}
+
+.header-logo figure {
+    margin: 0;
+    gap: 0.75rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    display: flex
+}
+
+.header-logo figcaption {
+    color: var(--app-color);
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+body > header figure img {
+    border: none;
+    border-radius: 5px;
+    width: 2rem;
+    height: 2rem
+}
+
+
+/**
+ * Connector - activity animations
+ */
+.header-control {
+    top: 0;
+    right: 0;
+    gap: 0.75rem;
+    position: relative;
+    display: flex
+}
+
+.header-control .sync .icon {
+    cursor: pointer;
+    padding: 0.15rem;
+    width: 2.3rem;
+    height: 2.3rem;
+    display: none
+}
+
+.header-control .sync .error {
+    fill: var(--color-danger);
+}
+
+.header-control .sync .sent {
+    fill: var(--color-success);
+}
+
+.header-control .sync .edit {
+    fill: var(--primary-color);
+    animation: write 1s cubic-bezier(0.3, 0.7, 0.3, 0.7) infinite;
+    transform-origin: 0 100%;
+    top: .5rem;
+    right: -0.5rem;
+    position: relative
+}
+
+.header-control .sync.edit .edit,
+.header-control .sync.error .error,
+.header-control .sync.sent .sent {
+    display: block;
+}
+
+@keyframes write{
+    0%{transform: rotate(-30deg)}
+    50%{transform: rotate(-20deg)}
+    100%{transform: rotate(-30deg)}
+}
+
+
+/**
+ * theme chooser.
+ */
+body.dark button.theme-btn svg:nth-child(1),
+button.theme-btn svg:nth-child(2) {
+    display: none;
+}
+
+body.dark button.theme-btn svg:nth-child(2),
+button.theme-btn svg:nth-child(1){
+    display: inline-block;
+}
+
+
+/**
+ * language chooser.
+ */
+.lang-chooser {
+    position: relative;
+}
+
+.lang-chooser ul {
+    border: 1px solid var(--alternate-color);
+    border-radius: var(--border-radius);
+    background-color: var(--box-bg-color);
+    box-shadow: 0 2px 2px 0 var(--box-shadow);
+    list-style: none;
+    padding: 0.5rem;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 0.25rem;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+}
+
+.lang-chooser ul:before {
+    content: '';
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid var(--alternate-color);
+    top: -0.5rem;
+    left: calc(50% - 0.5rem);
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.lang-chooser button {
+    background-color: transparent;
+    color: var(--primary-color);
+    white-space: nowrap;
+    word-break: keep-all;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.lang-chooser button.current,
+.lang-chooser button:hover {
+    color: var(--primary-color);
+    background-color: var(--alternate-color);
+}

@@ -1,0 +1,20 @@
+/**
+ * drag and drop style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+[draggable=true] {
+    cursor: grab;
+}
+
+[draggable=true].dragging {
+    opacity: 0.45;
+    cursor: grabbing;
+}
+
+[draggable=true],
+.container {
+    touch-action: none;
+}

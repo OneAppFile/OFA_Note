@@ -1,0 +1,111 @@
+/**
+ * dialog style.
+ *
+ * @homepage https://ocno.de/
+ * @copyright 2026 Naki Dal Gelo
+ * @Licensed under MIT
+ */
+
+dialog {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 2px 0 var(--box-shadow);
+    color: var(--primary-color);
+    background-color: var(--box-bg-color);
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    margin: auto;
+    padding: 1.5rem;
+    width: fit-content;
+    height: fit-content;
+    max-width: max(400px, 70vw);
+    max-height: 70vh;
+    overflow: hidden;
+    flex-direction: column;
+    opacity: 0;
+    display: none;
+}
+
+dialog:modal {
+    overlay: auto !important;
+}
+
+dialog[open] {
+    pointer-events: auto;
+    animation: dialog-opening 0.2s forwards;
+    opacity: 1;
+    display: flex;
+}
+
+dialog.closing[open],
+dialog.closing {
+    animation: dialog-closing 0.2s forwards;
+}
+
+dialog::backdrop {
+    background-color: var(--primary-color);
+    opacity: 0;
+    inset: 0;
+    position: fixed;
+}
+
+dialog[open]::backdrop {
+    opacity: .65;
+    inset: 0;
+    animation: backdrop-opening 0.2s forwards;
+}
+
+dialog.closing[open]::backdrop,
+dialog.closing::backdrop {
+    animation: backdrop-closing 0.2s forwards;
+}
+
+
+@keyframes backdrop-opening {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.65;
+    }
+}
+
+@keyframes backdrop-closing {
+    0% {
+        opacity: 0.65;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes dialog-opening {
+    0% {
+        opacity: 0;
+        transform: scale(25%);
+        display: flex;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(100%);
+        display: flex;
+    }
+}
+
+@keyframes dialog-closing {
+    0% {
+        opacity: 1;
+        transform: scale(100%);
+        display: flex;
+    }
+    99% {
+        opacity: 0;
+        transform: scale(25%);
+        display: flex;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(25%);
+        display: none;
+    }
+}
