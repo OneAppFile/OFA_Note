@@ -6,37 +6,12 @@ manage a notes with browser.
 The app is compressed to a single PHP file and csn be used on every web server. 
 You need no database.
 
-<div>
-<style>
-    .center {text-align: center;}
-    .badget {
-        --color:#505050;
-        font-family:Verdana,Geneva,DejaVu Sans,sans-serif;
-        font-size:10px;
-        white-space:nowrap;
-        color:white;
-        text-shadow:1px 1px 0 #111;
-        padding:0;
-    }
-    .badget span {
-        background-color: var(--color, #505050);
-        padding:5px;
-    }
-    .badget span:first-child {
-        border-radius:3px 0 0 3px;
-    }
-    .badget span:last-child {
-        border-radius:0 3px 3px 0;
-    }
-</style>
-</div>
 <div class="center">
-    <a href="https://ocno.com/_apps/note/">
-        <span class="badget"><span>✨</span><span style="--color:#709f33">Try Demo</span></span>
-    </a>
-    <a href="LICENSE.md">
-        <span class="badget"><span style="--color:#505050">License</span><span style="--color:#167abb">MIT</span></span>
-    </a>
+
+[![✨ Try Demo](https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=%23555|%23709f33)](https://ocno.de/_apps/note/)
+
+[![License MIT](https://ocno.de/_utility/badge/?l=License|MIT&c=%23505050|%23167abb)](LICENSE.md)
+
 </div>
 
 
@@ -82,7 +57,7 @@ You need no database.
 
 ## Try the Live Demo
 
-Don't want to install yet? You can try it out [live demo](https://ocno.com/_apps/note/) first!
+Don't want to install yet? You can try it out [live demo](https://ocno.de/_apps/note/) first!
 
 
 ## License
@@ -91,4 +66,4 @@ OFA Note is open-source software licensed under the [MIT License](LICENSE.md).
 
 ---
 
-**[Website](https://ocno.com/_apps/note/)** • **[Demo](https://ocno.com/_apps/note/)** 
+**[Website](https://ocno.de/_apps/note/)** • **[Demo](https://ocno.de/_apps/note/)** 
