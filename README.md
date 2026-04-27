@@ -6,13 +6,10 @@ manage a notes with browser.
 The app is compressed to a single PHP file and csn be used on every web server. 
 You need no database.
 
-<p style="text-align: center">
-    <a href="https://ocno.de/_apps/note/">
-      <img src="https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=%23555|%23709f33" alt="✨ Try Demo"/>
-    </a>
-    <a href="LICENSE.md">
-      <img src="https://ocno.de/_utility/badge/?l=License|MIT&c=%23505050|%23167abb" alt="License MIT"/>
-    </a>
+<p align="center">
+    <a href="https://ocno.de/_apps/note/"><img src="https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=%23555|%23709f33" alt="✨ Try Demo"/></a>
+&nbsp;
+    <a href="LICENSE.md"><img src="https://ocno.de/_utility/badge/?l=License|MIT&c=%23505050|%23167abb" alt="License MIT"/></a>
 </p>
 
 
@@ -41,13 +38,13 @@ You need no database.
 
 ### Desktop version
 
-<p style="text-align: center">
+<p align="center">
   <img src="Assets/Img/screen1.webp" alt="Desktop version"/>
 </p>
 
 ### Mobile version
 
-<p style="text-align: center">
+<p align="center">
   <img src="Assets/Img/screen2.webp" alt="Mobile version"/>
 </p>
 
