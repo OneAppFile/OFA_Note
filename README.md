@@ -6,13 +6,14 @@ manage a notes with browser.
 The app is compressed to a single PHP file and csn be used on every web server. 
 You need no database.
 
-<div class="center">
-
-[![✨ Try Demo](https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=%23555|%23709f33)](https://ocno.de/_apps/note/)
-
-[![License MIT](https://ocno.de/_utility/badge/?l=License|MIT&c=%23505050|%23167abb)](LICENSE.md)
-
-</div>
+<p style="text-align: center">
+    <a href="https://ocno.de/_apps/note/">
+      <img src="https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=%23555|%23709f33" alt="✨ Try Demo"/>
+    </a>
+    <a href="LICENSE.md">
+      <img src="https://ocno.de/_utility/badge/?l=License|MIT&c=%23505050|%23167abb" alt="License MIT"/>
+    </a>
+</p>
 
 
 ## Features
@@ -40,19 +41,15 @@ You need no database.
 
 ### Desktop version
 
-<div class="center">
-
-![Desktop version](Assets/Img/screen1.webp)
-
-</div>
+<p style="text-align: center">
+  <img src="Assets/Img/screen1.webp" alt="Desktop version"/>
+</p>
 
 ### Mobile version
 
-<div class="center">
-
-![Mobile version](Assets/Img/screen2.webp)
-
-</div>
+<p style="text-align: center">
+  <img src="Assets/Img/screen2.webp" alt="Mobile version"/>
+</p>
 
 
 ## Try the Live Demo
