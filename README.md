@@ -7,11 +7,11 @@ The app is compressed to a single PHP file and csn be used on every web server.
 You need no database.
 
 <p align="center">
-    <a href="https://ocno.de/_apps/note/"><img src="https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=%23555|%23709f33" alt="✨ Try Demo"/></a>
+    <a href="https://ocno.de/_apps/note/"><img src="https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=555|709f33" alt="✨ Try Demo"/></a>
 &nbsp;
-    <a href="LICENSE.md"><img src="https://ocno.de/_utility/badge/?l=License|MIT&c=%23505050|%23167abb" alt="License MIT"/></a>
+    <a href="LICENSE.md"><img src="https://ocno.de/_utility/badge/?l=License|MIT&c=505050|167abb" alt="License MIT"/></a>
 &nbsp;
-    <img src="https://ocno.de/_utility/badge/?l=Release|1.0.0&c=%23505050|%23007ec6" alt="Release"/>
+    <img src="https://ocno.de/_utility/badge/?l=Release|1.0.0&c=505050|007ec6" alt="Release"/>
 </p>
 
 
