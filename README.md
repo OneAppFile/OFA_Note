@@ -1,4 +1,4 @@
-# One File App - Note
+# 📝 One File App - Note
 
 A self-hosted, clean and simple notification app based on PHP adn JS. To create, edit and 
 manage a notes with browser.
@@ -10,10 +10,12 @@ You need no database.
     <a href="https://ocno.de/_apps/note/"><img src="https://ocno.de/_utility/badge/?l=%E2%9C%A8|Try%20Demo&c=%23555|%23709f33" alt="✨ Try Demo"/></a>
 &nbsp;
     <a href="LICENSE.md"><img src="https://ocno.de/_utility/badge/?l=License|MIT&c=%23505050|%23167abb" alt="License MIT"/></a>
+&nbsp;
+    <img src="https://ocno.de/_utility/badge/?l=Release|1.0.0&c=%23505050|%23007ec6" alt="Release"/>
 </p>
 
 
-## Features
+## ✅ Features
 
 - **One file** App is compressed to single PHP file!
 - **Self-hosted** - Ap can be used on own server
@@ -34,27 +36,34 @@ You need no database.
 - **No framework** - No other framework was used for reducing of app size
 
 
-## Screenshot
+## 🏗️ How To
 
-### Desktop version
+- To host Note OFA yourself, take `Note.php` from `_Bin` directory and copy the file to
+own servers.
+- Call this file in the browser. 
+- Done!
+
+## 📸 Screenshot
+
+### 💻️ Desktop version
 
 <p align="center">
   <img src="Assets/Img/screen1.webp" alt="Desktop version"/>
 </p>
 
-### Mobile version
+### 📱 Mobile version
 
 <p align="center">
   <img src="Assets/Img/screen2.webp" alt="Mobile version"/>
 </p>
 
 
-## Try the Live Demo
+## 🧪 Try the Live Demo
 
 Don't want to install yet? You can try it out [live demo](https://ocno.de/_apps/note/) first!
 
 
-## License
+## 📜 License
 
 OFA Note is open-source software licensed under the [MIT License](LICENSE.md). 
 
